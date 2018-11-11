@@ -1,0 +1,470 @@
+function randomData() {
+    return Math.round(Math.random());
+}
+
+var data = [{
+    name: '北京',
+    value0:2820694,
+    value1: 21006,
+    value2:220428,
+}, {
+    name: '天津',
+    value0:449568,
+    value1:22,
+    value2: 7010,
+}, {
+    name: '上海',
+    value0:45495769,
+    value1: 5948926,
+    value2:1364946,
+}, {
+    name: '重庆',
+    value0: 43608,
+    value1: 1993,
+    value2: 5036,
+}, {
+    name: '河北',
+    value0: 370775,
+    value1: 6952,
+    value2: 117043,
+}, {
+    name: '河南',
+    value0: 45472,
+    value1: 2485,
+    value2:101463,
+}, {
+    name: '云南',
+    value0: 1168,
+    value1: 37,
+    value2:71,
+}, {
+    name: '辽宁',
+    value0: 280891,
+    value1: 12651,
+    value2: 128668,
+}, {
+    name: '黑龙江',
+    value0: 4951,
+    value1: 9,
+    value2: 119,
+}, {
+    name: '湖南',
+    value0:124002,
+    value1: 438,
+    value2: 10360,
+}, {
+    name: '安徽',
+    value1: 926481,
+    value0: 246898,
+    value2: 113066,
+}, {
+    name: '山东',
+    value0: 4050653,
+    value1:10368,
+    value2: 181950,
+}, {
+    name: '江苏',
+    value0: 12148047,
+    value1: 1619759,
+    value2: 638400,
+}, {
+    name: '浙江',
+    value0: 1661386,
+    value1: 8833379,
+    value2: 15707261,
+}, {
+    name: '江西',
+    value0: 1765,
+    value1:14,
+    value2: 4731,
+}, {
+    name: '湖北',
+    value0: 12154872,
+    value1: 3093038,
+    value2: 2811627,
+}, {
+    name: '广西',
+    value0: 9140,
+    value1: 2030,
+    value2: 4430,
+}, {
+    name: '甘肃',
+    value1: 2211,
+    value0: 270629,
+    value2: 4695,
+}, {
+    name: '山西',
+    value0: 914,
+    value1: 203,
+    value2: 443,
+}, {
+    name: '内蒙古',
+    value0: 85,
+    value1: 32,
+    value2: 2,
+}, {
+    name: '陕西',
+    value0: 270629,
+    value1: 2211,
+    value2: 4695,
+}, {
+    name: '吉林',
+    value0:6002,
+    value1:3880,
+    value2: 2590,
+}, {
+    name: '福建',
+    value0: 723982,
+    value1: 5381,
+    value2: 153772,
+}, {
+    name: '贵州',
+    value0: 1730,
+    value1: 600,
+    value2: 37842,
+}, {
+    name: '广东',
+    value0: 370775,
+    value1: randomData(),
+    value2: randomData(),
+},{
+    name: '四川',
+    value0: 13021022,
+    value1: 76647,
+    value2: 24077,
+}, {
+    name: '海南',
+    value0: 40,
+    value1: 5032,
+    value2: 23792,
+},{
+    name: '新疆',
+    value0: 232,
+    value1:342,
+    value2: 65436,
+}];
+
+var resultdata0 = [];
+var resultdata1 = [];
+var resultdata2 = [];
+var sum0 = 0;
+var sum1 = 0;
+var sum2 = 0;
+var titledata = [];
+for (var i = data.length-1; i>0; i--) {
+    var d0 = {
+        name: data[i].name,
+        value: data[i].value0
+    };
+    var d1 = {
+        name: data[i].name,
+        value: data[i].value1
+    };
+    var d2 = {
+        name: data[i].name,
+        value: data[i].value2
+    };
+    titledata.push(data[i].name)
+    resultdata0.push(d0);
+    resultdata1.push(d1);
+    resultdata2.push(d2);
+    sum0 += data[i].value0;
+    sum1 += data[i].value1;
+    sum2 += data[i].value2;
+}
+// function NumDescSort(a,b){
+//     return a.value-b.value;
+// }
+
+// resultdata0.sort(NumDescSort);
+// resultdata1.sort(NumDescSort);
+// resultdata2.sort(NumDescSort);
+
+
+option = {
+    title: [{
+        text: '笔的销售量统计',
+        subtext: '数据来源于淘宝',
+        left: 'center'
+    // },{
+    //     text: '晨光: ' +sum0,
+    //     right: 120,
+    //     top: 40,
+    //     width: 100,
+    //     textStyle: {
+    //         color: '#fff',
+    //         fontSize: 16
+    //     }
+    // },{
+    //     text: "真彩: " +sum1,
+    //     right: 120,
+    //     top: 40,
+    //     width: 100,
+    //     textStyle: {
+    //         color: '#fff',
+    //         fontSize: 16
+    //     }
+    // },{
+    //     text: "爱好: "+sum2,
+    //     right: 120,
+    //     top: 40,
+    //     width: 100,
+    //     textStyle: {
+    //         color: '#fff',
+    //         fontSize: 16
+    //     }
+    },],
+    tooltip: {
+        trigger: 'item'
+    },
+    legend: {
+        orient: 'vertical',
+        left: 'left',
+        data: ['晨光', '真彩', '爱好'],
+        selectedMode: 'single',
+    },
+    visualMap: {
+        min: 0,
+        max: 50000,
+        left: 'left',
+        top: 'bottom',
+        text: ['高', '低'],
+        calculable: true,
+        colorLightness: [0.2, 100],
+        color: ['#F4A460','#C1FFC1','#BCD2EE'],
+        dimension: 0
+    },
+    toolbox: {
+        show: true,
+        orient: 'vertical',
+        left: 'right',
+        top: 'center',
+        feature: {
+            dataView: {
+                readOnly: false
+            },
+            restore: {},
+            saveAsImage: {}
+        }
+    },
+    grid: {
+        right: 1,
+        
+        top: 50,
+        bottom: 5,
+        width: '30%'
+    },
+    xAxis: [{
+        position: 'top',
+        // scala:true,
+        type: 'value',
+        boundaryGap: false,
+        length:100,
+        splitLine: {
+            show: false
+        },
+        axisLine: {
+            show: false
+        },
+        axisTick: {
+            show: false
+        },
+    }],
+    yAxis: [{
+        type: 'category',
+        data: titledata,
+        axisTick: {
+            alignWithLabel: true
+        }
+        
+        
+    }],
+    series: [{
+        z: 1,
+        name: '晨光',
+        type: 'map',
+        map: 'china',
+        left: '5',
+        right: '35%',
+        top: 50,
+        bottom: "35%",
+        zoom: 0.8,
+        label: {
+            normal: {
+                show: true
+            },
+            itemStyle: {
+            normal: {
+                // 随机显示
+                //color:function(d){return "#"+Math.floor(Math.random()*(256*256*256-1)).toString(16);}
+              
+                // 定制显示（按顺序）
+                color: function(params) { 
+                    var colorList = ['#C33531','#EFE42A','#64BD3D','#EE9201','#29AAE3', '#B74AE5','#0AAF9F','#E89589','#16A085','#4A235A','#C39BD3 ','#F9E79F','#BA4A00','#ECF0F1','#616A6B','#EAF2F8','#4A235A','#3498DB' ]; 
+                    return colorList[params.dataIndex] 
+                }
+            },
+        },
+            emphasis: {
+                show: true
+            }
+        },
+     
+        //roam: true,
+        data: resultdata0
+    }, {
+        z: 1,
+        name: '真彩',
+        type: 'map',
+        map: 'china',
+        left: '5',
+        right: '35%',
+        top: 50,
+        bottom: "35%",
+        zoom: 0.75,
+        label: {
+            normal: {
+                show: true
+            },
+            emphasis: {
+                show: true
+            }
+        },
+        //roam: true,
+        data: resultdata1
+    }, {
+        z: 1,
+        name: '爱好',
+        type: 'map',
+        map: 'china',
+        left: '5',
+        right: '35%',
+        top: 50,
+        bottom: "35%",
+        zoom: 0.85,
+        label: {
+            normal: {
+                show: true
+            },
+            emphasis: {
+                show: true
+            }
+        },
+        //roam: true,
+        data: resultdata2
+    }, {
+        name: '晨光',
+        z: 2,
+        type: 'bar',
+        label: {
+            normal: {
+                show: false
+            },
+            emphasis: {
+                show: true,
+            }
+        },
+        itemStyle: {
+            emphasis: {
+                color: "rgb(0,206,209)"
+            }
+        },
+        data: resultdata0
+    }, {
+        name: '真彩',
+        z: 2,
+        type: 'bar',
+        label: {
+            normal: {
+                show: false
+            },
+            emphasis: {
+                show: true
+            }
+        },
+        itemStyle: {
+            emphasis: {
+                color: "rgb(254,153,78)"
+            }
+        },
+        data: resultdata1
+    }, {
+        name: '爱好',
+        z: 2,
+        type: 'bar',
+        label: {
+            normal: {
+                show: false
+            },
+            emphasis: {
+                show: true
+            }
+        },
+        itemStyle: {
+            emphasis: {
+                color: "rgb(254,153,78)"
+            }
+        },
+        data: resultdata2
+    }, {
+        name: '晨光',
+        z: 2,
+        type: 'pie',
+        radius: ['17%', '25%'],
+        center: ['30%', '82.5%'],
+        label: {
+            normal: {
+                show: true
+            },
+            emphasis: {
+                show: true,
+            }
+        },
+        itemStyle: {
+            emphasis: {
+                color: "rgb(254,153,78)"
+            }
+        },
+        data: resultdata0
+    }, {
+        name: '真彩',
+        z: 2,
+        type: 'pie',
+        radius: ['17%', '25%'],
+        center: ['30%', '82.5%'],
+        label: {
+            normal: {
+                show: true
+            },
+            emphasis: {
+                show: true
+            }
+        },
+        itemStyle: {
+            emphasis: {
+                color: "rgb(254,153,78)"
+            }
+        },
+        data: resultdata1
+    }, {
+        name: '爱好',
+        z: 2,
+        type: 'pie',
+        radius: ['17%', '25%'],
+        center: ['30%', '82.5%'],
+        label: {
+            normal: {
+                show: true
+            },
+            emphasis: {
+                show: true
+            }
+        },
+        itemStyle: {
+            emphasis: {
+                color: "rgb(254,153,78)"
+            }
+        },
+        data: resultdata2
+    }]
+};
