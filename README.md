@@ -1,4 +1,4 @@
-# Big-data-training-project
+# Data crawling instance
 School professional training project
 
 Using Python to crawl Taobao's data on pens, use spark to clean data, and then use echarts and cloud chart to visualize data.
